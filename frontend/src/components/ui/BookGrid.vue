@@ -22,6 +22,9 @@
                     <v-icon small>mdi-minus-circle-outline</v-icon>도서 열람
                 </v-btn>
             </div>
+            <BooksForSubscribers @search="search" style="margin-bottom: 10px; background-color: #ffffff;"></BooksForSubscribers>
+            <BooksByAuthor @search="search" style="margin-bottom: 10px; background-color: #ffffff;"></BooksByAuthor>
+            <AllBooks @search="search" style="margin-bottom: 10px; background-color: #ffffff;"></AllBooks>
             <div class="mb-5 text-lg font-bold"></div>
             <div class="table-responsive">
                 <v-table>
@@ -36,6 +39,8 @@
                         <th>BookSummary</th>
                         <th>BookCoverImage</th>
                         <th>BookContent</th>
+                        <th>ViewCount</th>
+                        <th>LikeCount</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,6 +58,8 @@
                             <td class="whitespace-nowrap" label="BookSummary">{{ val.bookSummary }}</td>
                             <td class="whitespace-nowrap" label="BookCoverImage">{{ val.bookCoverImage }}</td>
                             <td class="whitespace-nowrap" label="BookContent">{{ val.bookContent }}</td>
+                            <td class="whitespace-nowrap" label="ViewCount">{{ val.viewCount }}</td>
+                            <td class="whitespace-nowrap" label="LikeCount">{{ val.likeCount }}</td>
                             <v-row class="ma-0 pa-4 align-center">
                                 <v-spacer></v-spacer>
                                 <Icon style="cursor: pointer;" icon="mi:delete" @click="deleteRow(val)" />
@@ -123,6 +130,8 @@
                             <String label="BookSummary" v-model="selectedRow.bookSummary" :editMode="true"/>
                             <String label="BookCoverImage" v-model="selectedRow.bookCoverImage" :editMode="true"/>
                             <String label="BookContent" v-model="selectedRow.bookContent" :editMode="true"/>
+                            <Number label="ViewCount" v-model="selectedRow.viewCount" :editMode="true"/>
+                            <Number label="LikeCount" v-model="selectedRow.likeCount" :editMode="true"/>
                             <v-divider class="border-opacity-100 my-divider"></v-divider>
                             <v-layout row justify-end>
                                 <v-btn

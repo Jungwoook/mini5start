@@ -45,6 +45,16 @@
             v-model="value.bookContent"
             :editMode="editMode"
         />
+        <Number
+            label="ViewCount"
+            v-model="value.viewCount"
+            :editMode="editMode"
+        />
+        <Number
+            label="LikeCount"
+            v-model="value.likeCount"
+            :editMode="editMode"
+        />
         <v-row class="ma-0 pa-0">
             <v-spacer></v-spacer>
             <v-btn width="64px" color="primary" @click="save">
