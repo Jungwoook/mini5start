@@ -43,7 +43,7 @@ mvn spring-boot:run
 ```
 - book
 ```
- http :8088/books bookId="bookId"authorId="authorId"bookTitle="bookTitle"category="category"createDate="createDate"modifyDate="modifyDate"bookSummary="bookSummary"bookCoverImage="bookCoverImage"bookContent="bookContent"
+ http :8088/books bookId="bookId"authorId="authorId"bookTitle="bookTitle"category="category"createDate="createDate"modifyDate="modifyDate"bookSummary="bookSummary"bookCoverImage="bookCoverImage"bookContent="bookContent"viewCount="viewCount"likeCount="likeCount"
 ```
 - admin
 ```

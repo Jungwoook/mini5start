@@ -10,7 +10,6 @@ import javax.persistence.*;
 import lombok.Data;
 import project.BookApplication;
 import project.domain.AddedToWishlist;
-import project.domain.BookViewed;
 import project.domain.EditedBookInfo;
 import project.domain.GetLikeCount;
 import project.domain.GetViewCount;
@@ -41,23 +40,9 @@ public class Book {
 
     private String bookContent;
 
-    @PostPersist
-    public void onPostPersist() {
-        BookViewed bookViewed = new BookViewed(this);
-        bookViewed.publishAfterCommit();
+    private Integer viewCount;
 
-        GetViewCount getViewCount = new GetViewCount(this);
-        getViewCount.publishAfterCommit();
-
-        GetLikeCount getLikeCount = new GetLikeCount(this);
-        getLikeCount.publishAfterCommit();
-
-        AddedToWishlist addedToWishlist = new AddedToWishlist(this);
-        addedToWishlist.publishAfterCommit();
-
-        EditedBookInfo editedBookInfo = new EditedBookInfo(this);
-        editedBookInfo.publishAfterCommit();
-    }
+    private Integer likeCount;
 
     public static BookRepository repository() {
         BookRepository bookRepository = BookApplication.applicationContext.getBean(
@@ -70,6 +55,8 @@ public class Book {
     public void viewBook() {
         //implement business logic here:
 
+        BookViewed bookViewed = new BookViewed(this);
+        bookViewed.publishAfterCommit();
     }
     //>>> Clean Arch / Port Method
 
