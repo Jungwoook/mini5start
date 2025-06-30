@@ -25,26 +25,6 @@ public class PolicyHandler {
 
     @StreamListener(
         value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='PublicationRequested'"
-    )
-    public void wheneverPublicationRequested_RequestPublishBook(
-        @Payload PublicationRequested publicationRequested
-    ) {
-        PublicationRequested event = publicationRequested;
-        System.out.println(
-            "\n\n##### listener RequestPublishBook : " +
-            publicationRequested +
-            "\n\n"
-        );
-
-        // Sample Logic //
-
-        RegisterBookCommand command = new RegisterBookCommand();
-        Admin.registerBook(command);
-    }
-
-    @StreamListener(
-        value = KafkaProcessor.INPUT,
         condition = "headers['type']=='RegistAuthorRequested'"
     )
     public void wheneverRegistAuthorRequested_RequestAuthor(

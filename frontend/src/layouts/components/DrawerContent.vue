@@ -29,12 +29,6 @@ import {
         />
         <VerticalNavLink
             :item="{
-                title: '구독자 도서 목록',
-                to: '/booksForSubscribers',
-            }"
-        />
-        <VerticalNavLink
-            :item="{
                 title: '작가 도서 목록',
                 to: '/booksByAuthors',
             }"
@@ -90,6 +84,12 @@ import {
             :item="{
                 title: '구독 관리',
                 to: '/subscriptions',
+            }"
+        />
+        <VerticalNavLink
+            :item="{
+                title: '구독자 도서 목록',
+                to: '/booksForSubscribers',
             }"
         />
         <VerticalNavLink

@@ -18,11 +18,7 @@
                 <v-btn :disabled="!selectedRow" style="margin-left: 5px;" @click="openEditDialog()" class="contrast-primary-text" small color="primary">
                     <v-icon small>mdi-pencil</v-icon>수정
                 </v-btn>
-                <v-btn :disabled="!selectedRow" style="margin-left: 5px;" @click="viewBook" class="contrast-primary-text" small color="primary" :disabled="!hasRole('User')">
-                    <v-icon small>mdi-minus-circle-outline</v-icon>도서 열람
-                </v-btn>
             </div>
-            <BooksForSubscribers @search="search" style="margin-bottom: 10px; background-color: #ffffff;"></BooksForSubscribers>
             <BooksByAuthor @search="search" style="margin-bottom: 10px; background-color: #ffffff;"></BooksByAuthor>
             <AllBooks @search="search" style="margin-bottom: 10px; background-color: #ffffff;"></AllBooks>
             <div class="mb-5 text-lg font-bold"></div>
@@ -167,21 +163,6 @@ export default {
     watch: {
     },
     methods:{
-        async viewBook(){
-            try{
-                var path = "viewBook".toLowerCase();
-                var temp = await this.repository.invoke(this.selectedRow, path, null)
-                // 스넥바 관련 수정 필요
-                // this.$EventBus.$emit('show-success','ViewBook 성공적으로 처리되었습니다.')
-                for(var i = 0; i< this.value.length; i++){
-                    if(this.value[i] == this.selectedRow){
-                        this.value[i] = temp.data
-                    }
-                }
-            }catch(e){
-                console.log(e)
-            }
-        },
     }
 }
 

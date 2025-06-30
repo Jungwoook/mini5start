@@ -9,10 +9,10 @@ import java.util.Map;
 import javax.persistence.*;
 import lombok.Data;
 import project.BookApplication;
-import project.domain.AddedToWishlist;
+import project.domain.BookDeleted;
+import project.domain.BookPublished;
+import project.domain.BookViewed;
 import project.domain.EditedBookInfo;
-import project.domain.GetLikeCount;
-import project.domain.GetViewCount;
 
 @Entity
 @Table(name = "Book_table")
@@ -44,6 +44,21 @@ public class Book {
 
     private Integer likeCount;
 
+    @PostPersist
+    public void onPostPersist() {
+        BookViewed bookViewed = new BookViewed(this);
+        bookViewed.publishAfterCommit();
+
+        EditedBookInfo editedBookInfo = new EditedBookInfo(this);
+        editedBookInfo.publishAfterCommit();
+
+        BookPublished bookPublished = new BookPublished(this);
+        bookPublished.publishAfterCommit();
+
+        BookDeleted bookDeleted = new BookDeleted(this);
+        bookDeleted.publishAfterCommit();
+    }
+
     public static BookRepository repository() {
         BookRepository bookRepository = BookApplication.applicationContext.getBean(
             BookRepository.class
@@ -51,14 +66,8 @@ public class Book {
         return bookRepository;
     }
 
-    //<<< Clean Arch / Port Method
-    public void viewBook() {
-        //implement business logic here:
-
-        BookViewed bookViewed = new BookViewed(this);
-        bookViewed.publishAfterCommit();
+    public void ViewBook() {
+        //
     }
-    //>>> Clean Arch / Port Method
-
 }
 //>>> DDD / Aggregate Root
