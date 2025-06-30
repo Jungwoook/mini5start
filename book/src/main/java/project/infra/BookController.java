@@ -19,26 +19,5 @@ public class BookController {
 
     @Autowired
     BookRepository bookRepository;
-
-    @RequestMapping(
-        value = "/books/{id}/viewbook",
-        method = RequestMethod.PUT,
-        produces = "application/json;charset=UTF-8"
-    )
-    public Book viewBook(
-        @PathVariable(value = "id") Long id,
-        HttpServletRequest request,
-        HttpServletResponse response
-    ) throws Exception {
-        System.out.println("##### /book/viewBook  called #####");
-        Optional<Book> optionalBook = bookRepository.findById(id);
-
-        optionalBook.orElseThrow(() -> new Exception("No Entity Found"));
-        Book book = optionalBook.get();
-        book.viewBook();
-
-        bookRepository.save(book);
-        return book;
-    }
 }
 //>>> Clean Arch / Inbound Adaptor

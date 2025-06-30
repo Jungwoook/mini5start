@@ -45,10 +45,6 @@ export default {
           link: "/books",
       },
       {
-          text: "구독자 도서 목록",
-          link: "/booksForSubscribers",
-      },
-      {
           text: "작가 도서 목록",
           link: "/booksByAuthors",
       },
@@ -83,6 +79,10 @@ export default {
       {
           text: "구독 관리",
           link: "/subscriptions",
+      },
+      {
+          text: "구독자 도서 목록",
+          link: "/booksForSubscribers",
       },
       {
           text: "구독권/구독 목록",

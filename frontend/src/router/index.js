@@ -20,10 +20,6 @@ const router = createRouter({
       component: () => import('../components/ui/BookGrid.vue'),
     },
     {
-      path: '/booksForSubscribers',
-      component: () => import('../components/BooksForSubscribersView.vue'),
-    },
-    {
       path: '/booksByAuthors',
       component: () => import('../components/BooksByAuthorView.vue'),
     },
@@ -58,6 +54,10 @@ const router = createRouter({
     {
       path: '/subscriptions',
       component: () => import('../components/ui/SubscriptionGrid.vue'),
+    },
+    {
+      path: '/booksForSubscribers',
+      component: () => import('../components/BooksForSubscribersView.vue'),
     },
     {
       path: '/subscriptionLists',

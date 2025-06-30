@@ -16,7 +16,7 @@ spring:
         - id: book
           uri: http://localhost:8083
           predicates:
-            - Path=/books/**, /booksForSubscribers/**, /booksByAuthors/**, /allBooks/**
+            - Path=/books/**, /booksByAuthors/**, /allBooks/**
         - id: admin
           uri: http://localhost:8084
           predicates:
@@ -36,7 +36,7 @@ spring:
         - id: subscription
           uri: http://localhost:8088
           predicates:
-            - Path=/subscriptions/**, /subscriptionLists/**
+            - Path=/subscriptions/**, /booksForSubscribers/**, /subscriptionLists/**
         - id: point
           uri: http://localhost:8089
           predicates:
